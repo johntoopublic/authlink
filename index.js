@@ -16,7 +16,9 @@ module.exports = function(env) {
   return module.exports;
 };
 
-module.exports.auth = function(req, next) {
+module.exports.auth = function(req, res, next) {
+	// Allow using with express as well as socket.io
+  next = next || res;
   var cookies = new Cookies(req);
   var hash = cookies.get('session') ?
     module.exports.hash(cookies.get('session')) : '';
@@ -27,7 +29,7 @@ module.exports.auth = function(req, next) {
   }
 };
 
-module.exports.sign = function(req, res) {
+module.exports.sign = function(req, res, next) {
   var cookies = new Cookies(req, res);
   var query = req.url.slice(req.url.indexOf('?') + 1);
   cookies.set('session', query ? module.exports.hash(query) : null);
