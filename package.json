@@ -1,0 +1,13 @@
+{
+	"dependencies": {
+		"cookies": "0.4"
+	},
+  "description": "A simple middleware to generate and check an hmac signed cookie as a lightweight auth.",
+  "license": "Unlicense",
+  "name": "authlink",
+  "repository": "git://github.com/johntoopublic/authlink.git",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "version": "0.1.0"
+}
