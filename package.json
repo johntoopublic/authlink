@@ -1,7 +1,7 @@
 {
-	"dependencies": {
-		"cookies": "0.4"
-	},
+  "dependencies": {
+    "cookies": "0.4"
+  },
   "description": "A simple middleware to generate and check an hmac signed cookie as a lightweight auth.",
   "license": "Unlicense",
   "name": "authlink",
