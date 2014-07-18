@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 var crypto = require('crypto');
 var os = require('os');
+var querystring = require('querystring');
+var url = require('url');
 
 var Cookies = require('cookies');
 
@@ -31,9 +33,9 @@ module.exports.auth = function(req, res, next) {
 
 module.exports.sign = function(req, res, next) {
   var cookies = new Cookies(req, res);
-  var query = req.url.slice(req.url.indexOf('?') + 1);
-  cookies.set('session', query ? module.exports.hash(query) : null);
-  res.writeHead(302, {location: settings.redirect});
+  var query = url.parse(req.url, true).query;
+  cookies.set('session', query.key ? module.exports.hash(query.key) : null);
+  res.writeHead(302, {location: query.path ? query.path : settings.redirect});
   res.end();
 };
 
@@ -52,7 +54,8 @@ module.exports.hash = function(key) {
 
 if (require.main === module) {
   var pair = module.exports.generate();
-  console.log('Call authlink.generate() inline or add\nauthlink({hashes:[\'' + 
-    pair.hash + '\']})\nand then authenticate on module.exports.sign with\n' +
-    pair.key);
+  console.log('Call authlink.generate() for a keypair or add\n' +
+    'authlink({hashes:[\'' + pair.hash + '\']})\n' +
+    'and then authenticate on authlink.sign with the querystring\n?' +
+    querystring.stringify({key:pair.key}));
 }

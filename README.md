@@ -3,13 +3,23 @@ authlink
 
 A simple node.js middleware to generate and check HMAC signed cookies for lightweight authentication.
 
-**[sign](/index.js#L30)** generates the cookie as a standard request, and redirects to authlink({redirect:'url'}).
+     ~ npm start
+
+    > authlink@0.2.0 start /root/src/authlink
+    > node index.js
+
+    Call authlink.generate() for a keypair or add
+    authlink({hashes:['eYRYURogrkOdhnhmKbAiSpBFff/D+8x9OgGv9WvuY6U=']})
+    and then authenticate on authlink.sign with the querystring
+    ?key=CKkPt%2B33Cl8hfWWNwrVcmWPLFCNIHxp4
+
+**[sign](/index.js#L34)** generates the cookie as a standard request, and redirects to authlink({redirect:'url'}) or ?path=url.
 
     function (req, res) {
       authlink.sign(req, res)
     }
 
-**[auth](/index.js#L19)** checks the generated cookie.
+**[auth](/index.js#L21)** checks the generated cookie.
 
     var authlink = require('authlink');
     // [auth](/index.js#L19) is a request wrapper,
