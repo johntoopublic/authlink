@@ -1,4 +1,4 @@
-authlink [![npm version](http://img.shields.io/npm/v/authlink.svg)](https://npmjs.org/package/authlink) [![npm downloads](http://img.shields.io/npm/dm/authlink.svg)](https://npmjs.org/package/authlink) [![npm downloads](http://img.shields.io/npm/l/authlink.svg)](http://unlicense.org)
+authlink [![npm downloads](http://img.shields.io/npm/dm/authlink.svg)](https://npmjs.org/package/authlink) [![npm version](http://img.shields.io/npm/v/authlink.svg)](https://npmjs.org/package/authlink) [![license](http://img.shields.io/npm/l/authlink.svg)](http://unlicense.org)
 ========
 
 A simple node.js middleware to generate and check HMAC signed cookies for lightweight authentication.
